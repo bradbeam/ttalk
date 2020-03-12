@@ -1,0 +1,91 @@
+Talos
+March 2020
+
+Brad Beam
+brad.beam@b-rad.info
+
+* What?
+
+Talos is a modern OS for Kubernetes
+
+\...what does that mean?
+
+- Minimal
+- Independently built from scratch
+- Embrace Cloud Native principles
+- Require non OS applications to run on Kubernetes
+
+.background chips_bg_v1.svg
+
+* Why?
+
+What's wrong with distro X?
+
+- General purpose
+- Require substantial configuration out of the box
+
+.background chips_bg_v1.svg
+
+* How?
+
+Embrace immutable infrastructure
+
+Apply best practices out of the box
+
+Remove the shell
+
+.background chips_bg_v1.svg
+
+* Tell me more
+
+Talos nodes are config file driven
+
+Talos configs/nodes take one of three forms
+
+- init
+- control plane
+- worker
+
+.background chips_bg_v1.svg
+
+* Talos Services
+
+Most services written from scratch in Go
+
+Each service/daemon hosts a gRPC server listening on a unix socket
+
+`APId` is the external facing gRPC server and handles the routing to internal services
+
+`APId` also handles request multiplexing
+-  interact with entire fleet with a single command
+
+.background chips_bg_v1.svg
+
+* Talos Interaction
+
+Interaction with Talos happens via `osctl`
+
+.code osctl_memory.txt
+
+.background chips_bg_v1.svg
+
+* Talos Service Interaction
+
+Each service api provides information for managing that component
+
+Ex, `networkd` provides information around the interfaces and routing table
+
+.background chips_bg_v1.svg
+
+* Demo
+
+Create a local docker based Talos cluster
+
+  osctl cluster create
+  osctl kubeconfig
+  kubectl --kubeconfig kubeconfig config set-cluster talos-default --server https://127.0.0.1:6443
+  kubectl get nodes -o wide
+
+.background chips_bg_v1.svg
+
+

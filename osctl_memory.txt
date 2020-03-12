@@ -1,0 +1,5 @@
+$ osctl memory -e cluster.talos.dev -n node01 -n node02 -n node03
+NODE     TOTAL    USED    FREE     SHARED   BUFFERS   CACHE   AVAILABLE
+node01   7938     871     4071     137      49        2945    7042
+node02   257844   14408   190796   18138    49        52589   227492
+node03   257844   1830    255186   125      49        777     254556
